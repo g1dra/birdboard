@@ -8,12 +8,7 @@
     <title>Get Projects</title>
 </head>
 <body>
-@forelse($projects as $project)
-    <a href="{{ $project->path }}"></a>
-    {{ $project->title }}
-    {{ $project->description }}
-@empty
-    <li>No projects yet</li>
-@endforelse
+    {{$project->title}}
+    {{$project->description}}
 </body>
 </html>
