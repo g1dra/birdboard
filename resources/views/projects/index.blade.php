@@ -9,7 +9,7 @@
 </head>
 <body>
 @forelse($projects as $project)
-    <a href="{{ $project->path }}"></a>
+    <a href="{{ $project->path() }}"></a>
     {{ $project->title }}
     {{ $project->description }}
 @empty

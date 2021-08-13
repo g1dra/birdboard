@@ -29,7 +29,11 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request) : RedirectResponse
     {
+
         $validated = $request->validated();
+
+        $validated['owner_id'] = auth()->id();
+        dd($validated);
         Project::create($validated);
         return redirect('/projects');
     }
