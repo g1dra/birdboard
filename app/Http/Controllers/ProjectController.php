@@ -18,7 +18,7 @@ class ProjectController extends Controller
     public function index(): View
     {
         $projects = auth()->user()->projects;
-        return view('projects.index', compact('projects'));
+        return view('dashboard', compact('projects'));
     }
 
     /**

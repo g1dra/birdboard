@@ -15,7 +15,7 @@ Route::get('/token', function () {
 
 
 Route::group(['middleware' => 'auth'], function (){
-    Route::get('/projects', [ProjectController::class, 'index']);
+    Route::get('/dashboard', [ProjectController::class, 'index']);
     Route::get('/projects/create', [ProjectController::class, 'create']);
     Route::post('/projects', [ProjectController::class, 'store']);
     Route::get('/projects/{project}', [ProjectController::class, 'show']);
