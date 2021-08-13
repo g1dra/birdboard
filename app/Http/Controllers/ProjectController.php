@@ -17,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index(): View
     {
-        $projects = Project::all();
+        $projects = auth()->user()->projects;
         return view('projects.index', compact('projects'));
     }
 
@@ -29,15 +29,16 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request) : RedirectResponse
     {
-
         $validated = $request->validated();
-
         $validated['owner_id'] = auth()->id();
-        dd($validated);
         Project::create($validated);
         return redirect('/projects');
     }
 
+    public function create()
+    {
+        return view('projects.create');
+    }
     /**
      * Display the specified resource.
      *
@@ -46,6 +47,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project) : View
     {
+        if (auth()->user()->isNot($project->owner)) {
+            abort(403);
+        }
+
         return view('projects.show', compact('project'));
     }
 
