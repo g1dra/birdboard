@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-Create blade
+Create blade test
 </body>
 </html>
